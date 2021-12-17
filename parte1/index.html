@@ -15,7 +15,7 @@
     
     
       
-        <title>Executando e jogando um Connect-4 eletrônico - Pygame + Min-Max</title>
+        <title>Executando e jogando - Pygame + Min-Max</title>
       
     
     
@@ -93,7 +93,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Executando e jogando um Connect-4 eletrônico
+              Executando e jogando
             
           </span>
         </div>
@@ -185,8 +185,48 @@
   
   
     <li class="md-nav__item">
-      <a href="./" class="md-nav__link">
+      <a href="../configuracao/" class="md-nav__link">
+        Instalação e configuração
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Executando e jogando
+      </a>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../parte2/" class="md-nav__link">
+        Colocando um robô na partida
       </a>
     </li>
   
@@ -212,21 +252,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#referencias" class="md-nav__link">
-    Referências
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -237,22 +262,29 @@
             <article class="md-content__inner md-typeset">
               
                 
-<a href="https://github.com/fbarth/Connect4-Python/edit/main/content/parte1/index.md" title="Edit this page" class="md-content__button md-icon">
+<a href="https://github.com/fbarth/Connect4-Python/edit/main/content/parte1.md" title="Edit this page" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
 </a>
 
 
 <h1 id="executando-e-jogando-um-connect-4-eletronico">Executando e jogando um Connect-4 eletrônico</h1>
-<p>Os alunos são convidados a jogar de forma manual e analisar o código feito.</p>
-<p>Depois eles precisam alterar o código para fazer com que um dos jogadores seja um robô - num primeiro momento um robô que só faz movimentos aleatórios.</p>
-<p>Depois eles são convidados a pensar em um algoritmo (só pensar) porque logo em seguida eu explico a ideia do min-max e função de utilidade.</p>
-<p>Eles são convidados a alterar o código do jogo para chamar a implementação do min-max e brincar com a profundidade.</p>
-<p>Eles são convidados a alterar o código para colocar dois robôs jogando um contra o outro.</p>
-<p>No final posso finalizar a aula falando dos avanços da DeepMind nesta área (Go, Chess, Shogi, etc..)</p>
-<h2 id="referencias">Referências</h2>
-<ul>
-<li><a href="https://en.wikipedia.org/wiki/Connect_Four">https://en.wikipedia.org/wiki/Connect_Four</a></li>
-</ul>
+<p>O objetivo desta atividade é você entender um pouco melhor o jogo e se 
+divertir executando uma versão do jogo onde espera-se que os <em>dois jogadores 
+sejam humanos</em>, pois a entrada dos dados é completamente manual. </p>
+<p>Considerando que você está na raiz do projeto, você deve executar a seguinte 
+sequência de comandos:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span> src
+python connect4.py
+</code></pre></div>
+<p>Depois de você executar o comando acima deve aparecer uma tela parecida com esta:</p>
+<figure>
+  <img src="../connect4.png" width="300" />
+</figure>
+
+<p><strong>Vamos jogar um pouco?</strong></p>
+<p>Deu para entender como o jogo funciona? Que tal abrir o código <code>connect4.py</code> e tentar entender o que 
+está escrito? O início do arquivo tem diversas funções que dizem respeito a lógica de funcionamento do jogo 
+<em>Connect-4</em>. No entanto, lá pela linha 94 começa toda uma lógica que está relacionado com o controle de eventos do pygame - algo que eu acho que você já sabe como funciona! </p>
 
   <hr>
 <div class="md-source-file">
@@ -273,6 +305,41 @@
       </main>
       
         <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../configuracao/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Instalação e configuração" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Instalação e configuração
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../parte2/" class="md-footer__link md-footer__link--next" aria-label="Next: Colocando um robô na partida" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Colocando um robô na partida
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
