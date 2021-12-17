@@ -1,0 +1,5 @@
+difficulty: 1
+weight: 1
+offering: 1
+studentFile: solution.py
+testFile: test_solution.py

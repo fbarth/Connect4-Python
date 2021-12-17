@@ -11,6 +11,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://fbarth.github.io/Connect4-Python/parte1/</loc>
+         <lastmod>2021-12-17</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://fbarth.github.io/Connect4-Python/reference/advanced-editing/</loc>
          <lastmod>2021-12-17</lastmod>
          <changefreq>daily</changefreq>
