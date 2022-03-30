@@ -8,21 +8,21 @@
       
       
       
-        <link rel="canonical" href="https://fbarth.github.io/Connect4-Python/">
+        <link rel="canonical" href="https://fbarth.github.io/Connect4-Python/parte3/">
       
-      <link rel="icon" href="assets/images/favicon.png">
+      <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.8">
     
     
       
-        <title>Pygame + Min-Max</title>
+        <title>Implementando um robô mais inteligente - Pygame + Min-Max</title>
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.644de097.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.644de097.min.css">
       
         
-        <link rel="stylesheet" href="assets/stylesheets/palette.e6a45f82.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.e6a45f82.min.css">
         
       
     
@@ -37,7 +37,7 @@
       
     
     
-    <script>__md_scope=new URL(".",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -61,7 +61,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#implementando-um-jogador-de-connect-4" class="md-skip">
+        <a href="#implementando-um-robo-mais-inteligente" class="md-skip">
           Skip to content
         </a>
       
@@ -75,7 +75,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="." title="Pygame + Min-Max" class="md-header__button md-logo" aria-label="Pygame + Min-Max" data-md-component="logo">
+    <a href=".." title="Pygame + Min-Max" class="md-header__button md-logo" aria-label="Pygame + Min-Max" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
@@ -94,7 +94,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Introdução
+              Implementando um robô mais inteligente
             
           </span>
         </div>
@@ -140,7 +140,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="." title="Pygame + Min-Max" class="md-nav__button md-logo" aria-label="Pygame + Min-Max" data-md-component="logo">
+    <a href=".." title="Pygame + Min-Max" class="md-nav__button md-logo" aria-label="Pygame + Min-Max" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
@@ -169,21 +169,11 @@
 
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="." class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
         Introdução
       </a>
-      
     </li>
   
 
@@ -196,7 +186,7 @@
   
   
     <li class="md-nav__item">
-      <a href="parte1/" class="md-nav__link">
+      <a href="../parte1/" class="md-nav__link">
         Jogando entre humanos
       </a>
     </li>
@@ -211,7 +201,7 @@
   
   
     <li class="md-nav__item">
-      <a href="parte2/" class="md-nav__link">
+      <a href="../parte2/" class="md-nav__link">
         Colocando um robô na partida
       </a>
     </li>
@@ -224,11 +214,21 @@
 
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="parte3/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Implementando um robô mais inteligente
       </a>
+      
     </li>
   
 
@@ -241,7 +241,7 @@
   
   
     <li class="md-nav__item">
-      <a href="configuracao/" class="md-nav__link">
+      <a href="../configuracao/" class="md-nav__link">
         Instalação e configuração
       </a>
     </li>
@@ -278,26 +278,34 @@
             <article class="md-content__inner md-typeset">
               
                 
-<a href="https://github.com/fbarth/Connect4-Python/edit/main/content/index.md" title="Edit this page" class="md-content__button md-icon">
+<a href="https://github.com/fbarth/Connect4-Python/edit/main/content/parte3.md" title="Edit this page" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
 </a>
 
 
 
-<h1 id="implementando-um-jogador-de-connect-4">Implementando um jogador de Connect-4</h1>
-<p>Liga4 é um jogo popular lançado pela empresa Milton Bradley Company (que foi adquirida pela Hasbro em 1984) em 1974, com o nome de "<em>Connect Four</em>". Neste jogo, os jogadores devem colocar as fichas estratégicamente na base, de forma a formar uma sequência com as 4 fichas da sua cor, ao mesmo tempo em que devem prestar atenção para bloquear as tentativas do oponente fazer o mesmo. Liga4 é um jogo para 2 jogadores, recomendado a partir de 5 anos e com duração média de 15 minutos.</p>
-<p align="center">
+<h1 id="implementando-um-robo-mais-inteligente">Implementando um robô mais inteligente</h1>
+<p>Considere o seguinte estado onde quem deve jogar é o jogador vermelho: </p>
 <figure>
-  <img src="img/lig4.jpg" alt="Jogo Liga4" />
+    <img src="../img/arvore_0.png" width="250"/> 
 </figure>
-</p>
 
-<p><strong>Na aula de hoje você irá</strong>:</p>
-<ul>
-<li>ver um exemplo de jogo de <em>Connect-4</em> implementando usando pygame.</li>
-<li>compreender de uma forma introdutória como utilizar o algoritmo <a href="https://en.wikipedia.org/wiki/Minimax">Min-Max</a> no desenvolvimento de robô capaz de jogar <em>Connect-4</em>.</li>
-</ul>
-<p>Vá para a próxima <a href="parte1/">parte</a> da aula.</p>
+<details class="question">
+<summary>Quais são as posições que o jogador vermelho pode jogar?</summary>
+<p><figure>
+<img src="../img/arvore_nivel_1.png"/> 
+</figure></p>
+</details>
+<details class="question">
+<summary>Qual é a melhor jogada?</summary>
+<p>Para responder esta pergunta o meu robô teria que analisar as próximas jogadas. Ou seja, as jogadas do seu adversário. </p>
+</details>
+<details class="note">
+<summary>Andando um pouco mais na árvore</summary>
+<p><figure>
+<img src="../img/arvore_nivel_2.png"/> 
+</figure></p>
+</details>
 
   <hr>
 <div class="md-source-file">
@@ -321,15 +329,30 @@
   
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
+        
+        <a href="../parte2/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Colocando um robô na partida" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Colocando um robô na partida
+            </div>
+          </div>
+        </a>
+      
       
         
-        <a href="parte1/" class="md-footer__link md-footer__link--next" aria-label="Next: Jogando entre humanos" rel="next">
+        <a href="../configuracao/" class="md-footer__link md-footer__link--next" aria-label="Next: Instalação e configuração" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Jogando entre humanos
+              Instalação e configuração
             </div>
           </div>
           <div class="md-footer__button md-icon">
@@ -359,14 +382,14 @@
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": ".", "features": [], "search": "assets/javascripts/workers/search.5e67fbfe.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.5e67fbfe.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
     
     
-      <script src="assets/javascripts/bundle.c44cc438.min.js"></script>
+      <script src="../assets/javascripts/bundle.c44cc438.min.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.0.0/js-yaml.min.js"></script>
       
-        <script src="js/markdown-enhancer.js"></script>
+        <script src="../js/markdown-enhancer.js"></script>
       
     
   </body>
