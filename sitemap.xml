@@ -41,6 +41,16 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://fbarth.github.io/Connect4-Python/parte7/</loc>
+         <lastmod>2022-03-31</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://fbarth.github.io/Connect4-Python/parte8/</loc>
+         <lastmod>2022-03-31</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://fbarth.github.io/Connect4-Python/rascunho/</loc>
          <lastmod>2022-03-31</lastmod>
          <changefreq>daily</changefreq>

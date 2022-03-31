@@ -15,7 +15,7 @@
     
     
       
-        <title>Algoritmo Min-Max (parte 2) - Pygame + Min-Max</title>
+        <title>Algoritmo Min-Max (parte 2) - Implementando um jogador para Liga4</title>
       
     
     
@@ -75,7 +75,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="Pygame + Min-Max" class="md-header__button md-logo" aria-label="Pygame + Min-Max" data-md-component="logo">
+    <a href=".." title="Implementando um jogador para Liga4" class="md-header__button md-logo" aria-label="Implementando um jogador para Liga4" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
@@ -88,7 +88,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Pygame + Min-Max
+            Implementando um jogador para Liga4
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -140,13 +140,13 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="Pygame + Min-Max" class="md-nav__button md-logo" aria-label="Pygame + Min-Max" data-md-component="logo">
+    <a href=".." title="Implementando um jogador para Liga4" class="md-nav__button md-logo" aria-label="Implementando um jogador para Liga4" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
 
     </a>
-    Pygame + Min-Max
+    Implementando um jogador para Liga4
   </label>
   
     <div class="md-nav__source">
@@ -286,6 +286,36 @@
   
   
     <li class="md-nav__item">
+      <a href="../parte7/" class="md-nav__link">
+        Máquina contra máquina
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../parte8/" class="md-nav__link">
+        Um pouco de história
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../configuracao/" class="md-nav__link">
         Instalação e configuração
       </a>
@@ -330,6 +360,67 @@
 
 
 <h1 id="algoritmo-min-max-parte-2">Algoritmo Min-Max (parte 2)</h1>
+<details class="question">
+<summary>E se limitarmos a busca até uma determinada profundidade <span class="arithmatex">\(p\)</span>?</summary>
+<p>Por exemplo, no caso abaixo em <span class="arithmatex">\(p=2\)</span>?</p>
+<p><figure>
+    <img src="../img/min-max-search-com-limite.png" /> 
+</figure></p>
+<p>O que está faltando?</p>
+</details>
+<details class="note">
+<summary>Função de utilidade</summary>
+<ul>
+<li>
+<p>A ideia é substituir a avaliação de estados terminais pela avaliação de estados intermediários. </p>
+</li>
+<li>
+<p>A função de avaliação deve retornar um valor alto para estados que tem uma utilidade maior para o nosso robô e valores baixos para estados que tem um utilidade menor. </p>
+</li>
+<li>
+<p>Podemos utilizar as mesmas regras vistas em <a href="../parte3/">Definindo algumas verificações</a>. </p>
+</li>
+</ul>
+</details>
+<details class="note">
+<summary>Versão Min-Max com limite de profundidade</summary>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">max_value</span><span class="p">(</span><span class="n">estado</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">p</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">estado</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+    <span class="n">v</span> <span class="o">=</span> <span class="o">-</span><span class="mi">99999</span>
+    <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">estado</span><span class="o">.</span><span class="n">sucessores</span><span class="p">():</span>
+        <span class="n">v</span> <span class="o">=</span> <span class="n">MAX</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">min_value</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">p</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">v</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">min_value</span><span class="p">(</span><span class="n">estado</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">p</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">estado</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+    <span class="n">v</span> <span class="o">=</span> <span class="mi">99999</span>
+    <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">estado</span><span class="o">.</span><span class="n">sucessores</span><span class="p">():</span>
+        <span class="n">v</span> <span class="o">=</span> <span class="n">MIN</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">max_value</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">p</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">v</span>
+</code></pre></div>
+</details>
+<details class="warning">
+<summary>Humano versus Min-Max com limite de profundidade</summary>
+<p>Vamos testar o desempenho de um Min-Max com profundidade 1, 3, 5 e 7? Digite: </p>
+<div class="highlight"><pre><span></span><code>python connect4_with_ai.py minmax <span class="m">1</span>
+
+python connect4_with_ai.py minmax <span class="m">3</span>
+
+python connect4_with_ai.py minmax <span class="m">5</span>
+
+python connect4_with_ai.py minmax <span class="m">7</span>
+</code></pre></div>
+</details>
+<details class="question">
+<summary>Quais foram as diferenças observadas?</summary>
+<ul>
+<li>Teve alguma diferença em termos de tempo de processamento?</li>
+<li>Teve alguma diferença em termos de desempenho? </li>
+<li>Alguma das configurações chega a ter um desempenho similar ao de um humano?</li>
+</ul>
+</details>
 
   <hr>
 <div class="md-source-file">
@@ -370,13 +461,13 @@
       
       
         
-        <a href="../configuracao/" class="md-footer__link md-footer__link--next" aria-label="Next: Instalação e configuração" rel="next">
+        <a href="../parte7/" class="md-footer__link md-footer__link--next" aria-label="Next: Máquina contra máquina" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Instalação e configuração
+              Máquina contra máquina
             </div>
           </div>
           <div class="md-footer__button md-icon">
