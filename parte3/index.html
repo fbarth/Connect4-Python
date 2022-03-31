@@ -15,7 +15,7 @@
     
     
       
-        <title>Implementando um robô mais inteligente - Pygame + Min-Max</title>
+        <title>Implementando um jogador de verdade - Pygame + Min-Max</title>
       
     
     
@@ -61,7 +61,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#implementando-um-robo-mais-inteligente" class="md-skip">
+        <a href="#implementando-um-jogador-de-verdade" class="md-skip">
           Skip to content
         </a>
       
@@ -94,7 +94,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Implementando um robô mais inteligente
+              Implementando um jogador de verdade
             
           </span>
         </div>
@@ -226,9 +226,54 @@
       
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        Implementando um robô mais inteligente
+        Implementando um jogador de verdade
       </a>
       
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../parte4/" class="md-nav__link">
+        Implementando um robô ainda melhor
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../parte5/" class="md-nav__link">
+        Algoritmo Min-Max (parte 1)
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../parte6/" class="md-nav__link">
+        Algoritmo Min-Max (parte 2)
+      </a>
     </li>
   
 
@@ -284,27 +329,51 @@
 
 
 
-<h1 id="implementando-um-robo-mais-inteligente">Implementando um robô mais inteligente</h1>
-<p>Considere o seguinte estado onde quem deve jogar é o jogador vermelho: </p>
-<figure>
-    <img src="../img/arvore_0.png" width="250"/> 
-</figure>
-
+<h1 id="implementando-um-jogador-de-verdade">Implementando um jogador de verdade!</h1>
 <details class="question">
-<summary>Quais são as posições que o jogador vermelho pode jogar?</summary>
+<summary>Por onde eu começo?</summary>
 <p><figure>
-<img src="../img/arvore_nivel_1.png"/> 
+    <img src="../img/comeco.png" width="300"/> 
 </figure></p>
 </details>
 <details class="question">
-<summary>Qual é a melhor jogada?</summary>
-<p>Para responder esta pergunta o meu robô teria que analisar as próximas jogadas. Ou seja, as jogadas do seu adversário. </p>
+<summary>O que eu faço agora?</summary>
+<p><figure>
+<img src="../img/comeco_1.png" width="300"/> 
+</figure></p>
+</details>
+<details class="question">
+<summary>E agora?</summary>
+<p><figure>
+<img src="../img/comeco_2.png" width="300"/> 
+</figure></p>
+</details>
+<details class="question">
+<summary>Qual é a melhor opção?</summary>
+<p><figure>
+<img src="../img/comeco_completo.png" /> 
+</figure></p>
+</details>
+<details class="tip">
+<summary>Definindo algumas verificações</summary>
+<ul>
+<li>é um movimento vencedor?</li>
+<li>está dominando o centro?</li>
+<li>está criando oportunidades na horizontal?</li>
+<li>está criando oportunidades na vertical?</li>
+<li>está criando oportunidades na diagonal?</li>
+</ul>
+</details>
+<details class="warning">
+<summary>Humanos versus um robô melhorado</summary>
+<p>Considerando que você já está no diretório <code>src</code>, digite:</p>
+<div class="highlight"><pre><span></span><code>python connect4_with_ai.py flat
+</code></pre></div>
 </details>
 <details class="note">
-<summary>Andando um pouco mais na árvore</summary>
-<p><figure>
-<img src="../img/arvore_nivel_2.png"/> 
-</figure></p>
+<summary>Humanos versus um robô melhorado</summary>
+<p>Agora temos um robô melhor que o robô aleatório. No entanto, este ainda é um robô que não consegue vencer na maioria das vezes. </p>
+<p><strong>O que podemos fazer para <a href="../parte4/">melhorar o desempenho</a> do robô?</strong></p>
 </details>
 
   <hr>
@@ -312,7 +381,7 @@
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">March 30, 2022</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">March 31, 2022</span>
       
     
   </small>
@@ -346,13 +415,13 @@
       
       
         
-        <a href="../configuracao/" class="md-footer__link md-footer__link--next" aria-label="Next: Instalação e configuração" rel="next">
+        <a href="../parte4/" class="md-footer__link md-footer__link--next" aria-label="Next: Implementando um robô ainda melhor" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Instalação e configuração
+              Implementando um robô ainda melhor
             </div>
           </div>
           <div class="md-footer__button md-icon">
@@ -387,9 +456,11 @@
     
       <script src="../assets/javascripts/bundle.c44cc438.min.js"></script>
       
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.0.0/js-yaml.min.js"></script>
+        <script src="../javascripts/mathjax.js"></script>
       
-        <script src="../js/markdown-enhancer.js"></script>
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
   </body>

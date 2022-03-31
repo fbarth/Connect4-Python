@@ -2,32 +2,47 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://fbarth.github.io/Connect4-Python/</loc>
-         <lastmod>2022-03-30</lastmod>
+         <lastmod>2022-03-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://fbarth.github.io/Connect4-Python/configuracao/</loc>
-         <lastmod>2022-03-30</lastmod>
+         <lastmod>2022-03-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://fbarth.github.io/Connect4-Python/parte1/</loc>
-         <lastmod>2022-03-30</lastmod>
+         <lastmod>2022-03-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://fbarth.github.io/Connect4-Python/parte2/</loc>
-         <lastmod>2022-03-30</lastmod>
+         <lastmod>2022-03-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://fbarth.github.io/Connect4-Python/parte3/</loc>
-         <lastmod>2022-03-30</lastmod>
+         <lastmod>2022-03-31</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://fbarth.github.io/Connect4-Python/parte4/</loc>
+         <lastmod>2022-03-31</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://fbarth.github.io/Connect4-Python/parte5/</loc>
+         <lastmod>2022-03-31</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://fbarth.github.io/Connect4-Python/parte6/</loc>
+         <lastmod>2022-03-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://fbarth.github.io/Connect4-Python/rascunho/</loc>
-         <lastmod>2022-03-30</lastmod>
+         <lastmod>2022-03-31</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>
