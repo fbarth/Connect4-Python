@@ -402,7 +402,7 @@
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">max_value</span><span class="p">(</span><span class="n">estado</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">estado</span><span class="o">.</span><span class="n">eh_final</span><span class="p">():</span>
         <span class="k">return</span> <span class="n">estado</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
-    <span class="n">v</span> <span class="o">=</span> <span class="o">-</span><span class="mi">99999</span>
+    <span class="n">v</span> <span class="o">=</span> <span class="o">-</span><span class="n">math</span><span class="o">.</span><span class="n">inf</span>
     <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">estado</span><span class="o">.</span><span class="n">sucessores</span><span class="p">():</span>
         <span class="n">v</span> <span class="o">=</span> <span class="n">MAX</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">min_value</span><span class="p">(</span><span class="n">s</span><span class="p">))</span>
     <span class="k">return</span> <span class="n">v</span>
@@ -410,7 +410,7 @@
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">min_value</span><span class="p">(</span><span class="n">estado</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">estado</span><span class="o">.</span><span class="n">eh_final</span><span class="p">():</span>
         <span class="k">return</span> <span class="n">estado</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
-    <span class="n">v</span> <span class="o">=</span> <span class="mi">99999</span>
+    <span class="n">v</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">inf</span>
     <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">estado</span><span class="o">.</span><span class="n">sucessores</span><span class="p">():</span>
         <span class="n">v</span> <span class="o">=</span> <span class="n">MIN</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">max_value</span><span class="p">(</span><span class="n">s</span><span class="p">))</span>
     <span class="k">return</span> <span class="n">v</span>
@@ -454,7 +454,7 @@
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">March 31, 2022</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">April 7, 2022</span>
       
     
   </small>

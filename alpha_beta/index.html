@@ -330,9 +330,40 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Min-Max com poda alpha-beta
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         Min-Max com poda alpha-beta
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#uma-sequencia-um-pouco-diferente-para-o-mesmo-exemplo" class="md-nav__link">
+    Uma sequência um pouco diferente para o mesmo exemplo
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -358,6 +389,21 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#uma-sequencia-um-pouco-diferente-para-o-mesmo-exemplo" class="md-nav__link">
+    Uma sequência um pouco diferente para o mesmo exemplo
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -375,13 +421,60 @@
 
 
 <h1 id="minmax-com-poda-alpha-beta">MinMax com poda alpha-beta</h1>
+<p>Da mesma forma que limitamos a profundidade da árvore de busca, podemos limitar (podar, cortar) alguns dos ramos laterais da árvore de busca. Cortamos alguns ramos que não valem a pena serem percorridos. Por exemplo, considere o início da busca para o exemplo que estamos utilizando <a href="../parte5/">neste material</a>: </p>
+<figure>
+    <img src="../img/alpha_beta/tree1.png" /> 
+</figure>
+
+<p>Quando o algoritmo MinMax chega no nodo de valor +1, em tese ele não precisa mais percorrer os demais nodos filhos de +1 pois já sabemos que o 0 será o valor selecionado:</p>
+<figure>
+    <img src="../img/alpha_beta/tree2.png" /> 
+</figure>
+
+<p>O mesmo acontece no ramo "B": </p>
+<figure>
+    <img src="../img/alpha_beta/tree3.png" /> 
+</figure>
+
+<p>E no final temos uma árvore de busca com pequenas podas ao longo da busca: </p>
+<figure>
+    <img src="../img/alpha_beta/tree4.png" /> 
+</figure>
+
+<p>Isto é possível se utilizarmos delimitadores <span class="arithmatex">\(\alpha\)</span> e <span class="arithmatex">\(\beta\)</span> nas funções <span class="arithmatex">\(min\)</span> e <span class="arithmatex">\(max\)</span> que definem os limites superiores e inferiores durante a busca: </p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">max_value</span><span class="p">(</span><span class="n">estado</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">beta</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">p</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">estado</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">estado</span><span class="o">.</span><span class="n">sucessores</span><span class="p">():</span>
+        <span class="n">alpha</span> <span class="o">=</span> <span class="n">MAX</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span> <span class="n">min_value</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">beta</span><span class="p">,</span> <span class="n">p</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">alpha</span> <span class="o">&gt;=</span> <span class="n">beta</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">alpha</span> <span class="c1">#cutoff</span>
+    <span class="k">return</span> <span class="n">alpha</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">min_value</span><span class="p">(</span><span class="n">estado</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">beta</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">p</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">estado</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">estado</span><span class="o">.</span><span class="n">sucessores</span><span class="p">():</span>
+        <span class="n">beta</span> <span class="o">=</span> <span class="n">MIN</span><span class="p">(</span><span class="n">beta</span><span class="p">,</span> <span class="n">max_value</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">beta</span><span class="p">,</span> <span class="n">p</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">beta</span> <span class="o">&lt;=</span> <span class="n">alpha</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">beta</span> <span class="c1">#cutoff</span>
+    <span class="k">return</span> <span class="n">beta</span>
+</code></pre></div>
+<p>A chamada para este procedimento deve ser feita da seguinte forma:</p>
+<div class="highlight"><pre><span></span><code><span class="n">max_value</span><span class="p">(</span><span class="n">estado</span><span class="p">,</span> <span class="o">-</span><span class="n">math</span><span class="o">.</span><span class="n">inf</span><span class="p">,</span> <span class="n">math</span><span class="o">.</span><span class="n">inf</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
+</code></pre></div>
+<h2 id="uma-sequencia-um-pouco-diferente-para-o-mesmo-exemplo">Uma sequência um pouco diferente para o mesmo exemplo</h2>
+<p>Talvez o exemplo apresentado acima não ilustra tão bem o impacto gerado pela versão MinMax-alpha-beta na redução do tamanho da árvore. Mas, se mudarmos um pouco a ordem de como as ações são executadas? Ao invés de gerar os sucessores seguindo a ordem A-B-C, e se gerarmos os sucessores seguindo a ordem A-C-B?</p>
+<figure>
+<img src="../img/alpha_beta/tree5.png" /> 
+</figure>
 
   <hr>
 <div class="md-source-file">
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">April 1, 2022</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">April 7, 2022</span>
       
     
   </small>
