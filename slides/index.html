@@ -8,20 +8,18 @@
       
       
       
-        <link rel="canonical" href="https://fbarth.github.io/Connect4-Python/parte7/">
+        <link rel="canonical" href="https://fbarth.github.io/Connect4-Python/slides/">
       
       
-        <link rel="prev" href="../parte6/">
+        <link rel="prev" href="../alpha_beta/">
       
-      
-        <link rel="next" href="../parte8/">
       
       <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.8">
     
     
       
-        <title>Máquina contra máquina - Implementando um jogador para Liga4</title>
+        <title>Material adicional - Implementando um jogador para Liga4</title>
       
     
     
@@ -63,7 +61,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#maquina-contra-maquina" class="md-skip">
+        <a href="#material-adicional" class="md-skip">
           Skip to content
         </a>
       
@@ -98,7 +96,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Máquina contra máquina
+              Material adicional
             
           </span>
         </div>
@@ -278,21 +276,11 @@
 
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../parte7/" class="md-nav__link">
         Máquina contra máquina
       </a>
-      
     </li>
   
 
@@ -348,11 +336,21 @@
 
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../slides/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Material adicional
       </a>
+      
     </li>
   
 
@@ -393,47 +391,15 @@
   
 
 
-<h1 id="maquina-contra-maquina">Máquina contra Máquina</h1>
-<details class="question">
-<summary>Será que um jogador com min-max pode perder de um jogador aleatório?</summary>
-<p>Que tal testarmos?</p>
-<div class="highlight"><pre><span></span><code>python<span class="w"> </span>connect4_ai_versus_ai.py<span class="w"> </span>random<span class="w"> </span><span class="m">0</span><span class="w"> </span>minmax<span class="w"> </span><span class="m">5</span>
-</code></pre></div>
-<p>Neste caso o primeiro jogador é o aleatório. </p>
-<p>E se usarmos um minmax com profundidade igual a 1?</p>
-<div class="highlight"><pre><span></span><code>python<span class="w"> </span>connect4_ai_versus_ai.py<span class="w"> </span>random<span class="w"> </span><span class="m">0</span><span class="w"> </span>minmax<span class="w"> </span><span class="m">1</span>
-</code></pre></div>
-</details>
-<details class="question">
-<summary>E se jogarmos min-max contra min-max?</summary>
-<p>Com profundidades iguais:</p>
-<div class="highlight"><pre><span></span><code>python<span class="w"> </span>connect4_ai_versus_ai.py<span class="w"> </span>minmax<span class="w"> </span><span class="m">5</span><span class="w"> </span>minmax<span class="w"> </span><span class="m">5</span>
-</code></pre></div>
-<p>Com profundidades diferentes:</p>
-<div class="highlight"><pre><span></span><code>python<span class="w"> </span>connect4_ai_versus_ai.py<span class="w"> </span>minmax<span class="w"> </span><span class="m">1</span><span class="w"> </span>minmax<span class="w"> </span><span class="m">5</span>
-</code></pre></div>
-</details>
-<details class="question">
-<summary>Questões gerais</summary>
-<ul>
-<li>
-<p>Será que uma pessoa pode aperfeiçoar o seu conhecimento sobre Liga4 jogando contra máquinas?</p>
-</li>
-<li>
-<p>Será que uma pessoa pode aperfeiçoar o seu conhecimento sobre Liga4 estudando partidas feitas por duas máquinas?</p>
-</li>
-<li>
-<p>Será que é possível uma máquina aprender a jogar Liga4 jogando contra uma outra máquina que sabe Liga4?</p>
-</li>
-</ul>
-</details>
+<h1 id="material-adicional">Material adicional</h1>
+<p>Além do código fonte disponível na pasta <a href="../src/">src</a> e do material do <a href="../content/index.md">site</a>, este repositório também tem um conjunto de <a href="../slides/slides.pdf">slides</a> que pode ser utilizado em uma aula expositiva. </p>
 
   <hr>
 <div class="md-source-file">
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">April 5, 2022</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">April 25, 2023</span>
       
     
   </small>
