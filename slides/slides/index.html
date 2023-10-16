@@ -1,0 +1,818 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://fbarth.github.io/Connect4-Python/slides/slides/">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.6">
+    
+    
+      
+        <title>Implementando um jogador para Liga4 - Implementando um jogador para Liga4</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.35e1ed30.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#implementando-um-jogador-para-liga4" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Implementando um jogador para Liga4" class="md-header__button md-logo" aria-label="Implementando um jogador para Liga4" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Implementando um jogador para Liga4
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Implementando um jogador para Liga4
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/fbarth/Connect4-Python" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Connect4-Python
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Implementando um jogador para Liga4" class="md-nav__button md-logo" aria-label="Implementando um jogador para Liga4" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Implementando um jogador para Liga4
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/fbarth/Connect4-Python" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Connect4-Python
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introdução
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../parte1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Jogando entre humanos
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../parte2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Colocando um robô na partida
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../parte3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Implementando um jogador de verdade
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../parte4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Implementando um robô ainda melhor
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../parte5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Algoritmo Min-Max (parte 1)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../parte6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Algoritmo Min-Max (parte 2)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../parte7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Máquina contra máquina
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../parte8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Um pouco de história e tendências
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../configuracao/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Instalação e configuração
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../alpha_beta/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Min-Max com poda alpha-beta
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Material adicional
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<style>
+    footer {
+        position: fixed;
+        bottom: 10px;
+        left: 1050px;
+        width: 400px;
+    }
+
+    footer img {
+        vertical-align: middle;
+    }
+
+</style>
+
+<h1 id="implementando-um-jogador-para-liga4">Implementando um jogador para Liga4</h1>
+<h1 id="_1"><img alt="height:500px" src="../content/img/lig4.jpg" /></h1>
+<hr />
+<h1 id="objetivos-da-aula">Objetivos da aula</h1>
+<p><strong>Na aula de hoje você irá</strong>:</p>
+<ul>
+<li>ver um exemplo de jogo de <em>Connect-4</em> implementando usando pygame.</li>
+<li>compreender de uma forma introdutória como utilizar o algoritmo <a href="https://en.wikipedia.org/wiki/Minimax">Min-Max</a> no desenvolvimento de robô capaz de jogar <em>Connect-4</em>.</li>
+</ul>
+<p>Todo o material utilizado nesta aula está disponível em <a href="https://github.com/fbarth/Connect4-Python">https://github.com/fbarth/Connect4-Python</a>.</p>
+<hr />
+<h1 id="jogando-entre-humanos">Jogando entre humanos</h1>
+<p><strong>Vamos jogar um pouco?</strong></p>
+<h2 id="cd-src-python-connect4py"><div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>src
+python<span class="w"> </span>connect4.py
+</code></pre></div></h2>
+<ul>
+<li>Deu para entender como o jogo funciona? </li>
+<li>Você achou difícil ganhar do seu adversário? </li>
+<li>Que capacidades uma pessoa precisa ter para jogar este jogo? </li>
+</ul>
+<hr />
+<h1 id="implementando-um-jogador">Implementando um jogador</h1>
+<p>Na linha 114 e 115 do arquivo <a href="../../src/connect4.py">connect4.py</a> é possível ver o seguinte trecho de código: </p>
+<div class="highlight"><pre><span></span><code><span class="n">posx</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">col</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">posx</span><span class="o">/</span><span class="n">SQUARESIZE</span><span class="p">))</span>
+</code></pre></div>
+<p>Precisamos trocar este trecho por algo como: </p>
+<div class="highlight"><pre><span></span><code><span class="n">col</span> <span class="o">=</span> <span class="n">player</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="n">player_code</span><span class="p">,</span> <span class="n">board</span><span class="p">)</span>
+</code></pre></div>
+<hr />
+<p>Sendo que o <code>player</code> pode ser uma instância da classe: </p>
+<h2 id="class-meujogadorplayer-def-nameself-return-meu-jogador-super-simples-def-moveself-player_code-board-todo-logica-para-escolher-uma-coluna-return-col"><div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">MeuJogador</span><span class="p">(</span><span class="n">Player</span><span class="p">):</span>
+
+<span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="s2">&quot;Meu Jogador super simples&quot;</span>
+
+<span class="k">def</span> <span class="nf">move</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">player_code</span><span class="p">,</span> <span class="n">board</span><span class="p">):</span>
+    <span class="c1"># TODO lógica para escolher uma coluna</span>
+    <span class="k">return</span> <span class="n">col</span>
+</code></pre></div></h2>
+<h1 id="implementando-um-robo-super-simples">Implementando um robô super simples</h1>
+<p><strong>Qual é o robô mais simples que podemos implementar?</strong></p>
+<hr />
+<h1 id="implementando-um-robo-super-simples_1">Implementando um robô super simples</h1>
+<p>Criando um jogador que joga de forma aleatória! </p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">randint</span>
+<span class="kn">from</span> <span class="nn">Player</span> <span class="kn">import</span> <span class="n">Player</span>
+
+<span class="k">class</span> <span class="nc">RandomPlayer</span><span class="p">(</span><span class="n">Player</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;Random&quot;</span>
+
+    <span class="c1">#</span>
+    <span class="c1"># retorna a coluna onde a bola será jogada</span>
+    <span class="c1">#</span>
+    <span class="k">def</span> <span class="nf">move</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">player_code</span><span class="p">,</span> <span class="n">board</span><span class="p">,</span> <span class="n">depth</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>connect4_with_ai.py<span class="w"> </span>random
+</code></pre></div>
+<hr />
+<h1 id="vamos-implementar-algo-um-pouco-mais-inteligente">Vamos implementar algo um pouco mais inteligente?</h1>
+<ul>
+<li>O que seria uma robô mais "inteligente"?</li>
+<li>Que abordagens podemos utilizar para implementar um robô mais <strong>inteligente</strong>? </li>
+</ul>
+<hr />
+<h1 id="por-onde-eu-comeco">Por onde eu começo?</h1>
+<p><img alt="height:400px" src="../content/img/comeco.png" /></p>
+<hr />
+<h1 id="o-que-eu-faco-agora">O que eu faço agora?</h1>
+<p><img alt="height:400px" src="../content/img/comeco_1.png" /></p>
+<hr />
+<h1 id="e-agora">E agora?</h1>
+<p><img alt="height:400px" src="../content/img/comeco_2.png" /></p>
+<hr />
+<h1 id="qual-e-a-melhor-opcao">Qual é a melhor opção?</h1>
+<p><img alt="height:400px" src="../content/img/comeco_completo.png" /></p>
+<p>É necessário ter uma função qualquer na implementação que diga qual é a melhor ação. Por exemplo, dizendo qual é o estado que tem <strong>maior utilidade</strong> para o nosso robô.</p>
+<hr />
+<h1 id="definindo-algumas-verificacoes">Definindo algumas verificações</h1>
+<ul>
+<li>é um movimento vencedor?</li>
+<li>está dominando o centro?</li>
+<li>está criando oportunidades na horizontal?</li>
+<li>está criando oportunidades na vertical?</li>
+<li>está criando oportunidades na diagonal?</li>
+</ul>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>connect4_with_ai.py<span class="w"> </span>flat
+</code></pre></div>
+<hr />
+<h1 id="humanos-versus-um-robo-melhorado">Humanos versus um robô melhorado</h1>
+<ul>
+<li>
+<p>Agora temos um robô melhor que o robô aleatório. No entanto, este ainda é um robô que não consegue vencer na maioria das vezes.</p>
+</li>
+<li>
+<p><strong>O que podemos fazer para <a href="parte4.md">melhorar o desempenho</a> do robô?</strong></p>
+</li>
+</ul>
+<hr />
+<h1 id="implementando-um-robo-mais-inteligente">Implementando um robô mais inteligente</h1>
+<p>Considere o seguinte estado onde quem deve jogar é o jogador vermelho: </p>
+<p><img alt="height:400px" src="../content/img/arvore_0.png" /></p>
+<hr />
+<h1 id="quais-sao-as-posicoes-que-o-jogador-vermelho-pode-jogar">Quais são as posições que o jogador vermelho pode jogar?</h1>
+<p><img alt="height:550px" src="../content/img/arvore_nivel_1.png" /></p>
+<hr />
+<h1 id="qual-e-a-melhor-jogada">Qual é a melhor jogada?</h1>
+<p>Para responder esta pergunta o meu robô teria que analisar as próximas jogadas. Ou seja, as jogadas do seu adversário. </p>
+<hr />
+<h1 id="andando-um-pouco-mais-na-arvore">Andando um pouco mais na árvore</h1>
+<p><img alt="height:600px" src="../content/img/arvore_nivel_2.png" /></p>
+<hr />
+<h1 id="andando-um-pouco-pouco-mais-na-arvore">Andando um pouco, pouco... mais na árvore</h1>
+<p><img alt="height:600px" src="../content/img/arvore_nivel_3.png" /></p>
+<hr />
+<h1 id="com-base-nas-informacoes-que-voce-tem-agora">Com base nas informações que você tem agora...</h1>
+<p><strong>Qual coluna o robô deve escolher quando estiver no estado abaixo?</strong></p>
+<p><img alt="height:400px" src="../content/img/arvore_0.png" /></p>
+<hr />
+<h1 id="algoritmo-min-max">Algoritmo Min-Max</h1>
+<p><img alt="height:550px" src="../content/img/min-max-search-1.png" /></p>
+<hr />
+<p><img alt="height:550px" src="../content/img/min-max-search-2.png" /></p>
+<p><strong>Qual ação o robô deve escolher?</strong></p>
+<hr />
+<h1 id="como-implementar-o-min-max">Como implementar o Min-Max</h1>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">max_value</span><span class="p">(</span><span class="n">estado</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">estado</span><span class="o">.</span><span class="n">eh_final</span><span class="p">():</span>
+        <span class="k">return</span> <span class="n">estado</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+    <span class="n">v</span> <span class="o">=</span> <span class="o">-</span><span class="n">math</span><span class="o">.</span><span class="n">inf</span>
+    <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">estado</span><span class="o">.</span><span class="n">sucessores</span><span class="p">():</span>
+        <span class="n">v</span> <span class="o">=</span> <span class="n">MAX</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">min_value</span><span class="p">(</span><span class="n">s</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">v</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">min_value</span><span class="p">(</span><span class="n">estado</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">estado</span><span class="o">.</span><span class="n">eh_final</span><span class="p">():</span>
+        <span class="k">return</span> <span class="n">estado</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+    <span class="n">v</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">inf</span>
+    <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">estado</span><span class="o">.</span><span class="n">sucessores</span><span class="p">():</span>
+        <span class="n">v</span> <span class="o">=</span> <span class="n">MIN</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">max_value</span><span class="p">(</span><span class="n">s</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">v</span>
+</code></pre></div>
+<hr />
+<h1 id="agora-temos-um-robo-vencedor-vamos-testar">Agora temos um robô vencedor? Vamos testar?</h1>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>connect4_with_ai.py<span class="w"> </span><span class="nb">complete</span>
+</code></pre></div>
+<hr />
+<h1 id="algoritmo-min-max-com-profundidade-p">Algoritmo Min-Max com profundidade <span class="arithmatex">\(p\)</span></h1>
+<p>E se limitarmos a busca até uma determinada profundidade <span class="arithmatex">\(p\)</span>? Por exemplo, no caso abaixo em <span class="arithmatex">\(p=2\)</span>?</p>
+<p><img alt="height:400px" src="../content/img/min-max-search-com-limite.png" /></p>
+<p>O que está faltando?</p>
+<hr />
+<h1 id="funcao-de-utilidade">Função de utilidade</h1>
+<ul>
+<li>
+<p>A ideia é substituir a avaliação de estados terminais pela avaliação de estados intermediários. </p>
+</li>
+<li>
+<p>A função de avaliação deve retornar um valor alto para estados que tem uma utilidade maior para o nosso robô e valores baixos para estados que tem um utilidade menor. </p>
+</li>
+</ul>
+<hr />
+<h1 id="versao-min-max-com-limite-de-profundidade">Versão Min-Max com limite de profundidade</h1>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">max_value</span><span class="p">(</span><span class="n">estado</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">p</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">estado</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+    <span class="n">v</span> <span class="o">=</span> <span class="o">-</span><span class="n">math</span><span class="o">.</span><span class="n">inf</span>
+    <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">estado</span><span class="o">.</span><span class="n">sucessores</span><span class="p">():</span>
+        <span class="n">v</span> <span class="o">=</span> <span class="n">MAX</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">min_value</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">p</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">v</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">min_value</span><span class="p">(</span><span class="n">estado</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">p</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">estado</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+    <span class="n">v</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">inf</span>
+    <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">estado</span><span class="o">.</span><span class="n">sucessores</span><span class="p">():</span>
+        <span class="n">v</span> <span class="o">=</span> <span class="n">MIN</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">max_value</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">p</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">v</span>
+</code></pre></div>
+<hr />
+<h1 id="humano-versus-min-max-com-limite-de-profundidade">Humano versus Min-Max com limite de profundidade</h1>
+<p>Vamos testar o desempenho de um Min-Max com profundidade 1, 3, 5 e 7?</p>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>connect4_with_ai.py<span class="w"> </span>minmax<span class="w"> </span><span class="m">1</span>
+
+python<span class="w"> </span>connect4_with_ai.py<span class="w"> </span>minmax<span class="w"> </span><span class="m">3</span>
+
+python<span class="w"> </span>connect4_with_ai.py<span class="w"> </span>minmax<span class="w"> </span><span class="m">5</span>
+
+python<span class="w"> </span>connect4_with_ai.py<span class="w"> </span>minmax<span class="w"> </span><span class="m">7</span>
+</code></pre></div>
+<hr />
+<h1 id="quais-foram-as-diferencas-observadas">Quais foram as diferenças observadas?</h1>
+<ul>
+<li>Teve alguma diferença em termos de tempo de processamento?</li>
+<li>Teve alguma diferença em termos de desempenho? </li>
+<li>Alguma das configurações chega a ter um desempenho similar ao de um humano?</li>
+</ul>
+<hr />
+<h1 id="maquina-contra-maquina">Máquina contra Máquina</h1>
+<p>Será que um jogador com min-max pode perder de um jogador aleatório?</p>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>connect4_ai_versus_ai.py<span class="w"> </span>random<span class="w"> </span><span class="m">0</span><span class="w"> </span>minmax<span class="w"> </span><span class="m">5</span>
+</code></pre></div>
+<p>E se usarmos um minmax com profundidade igual a 1?</p>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>connect4_ai_versus_ai.py<span class="w"> </span>random<span class="w"> </span><span class="m">0</span><span class="w"> </span>minmax<span class="w"> </span><span class="m">1</span>
+</code></pre></div>
+<hr />
+<h1 id="e-se-jogarmos-min-max-contra-min-max">E se jogarmos min-max contra min-max?</h1>
+<p>Com profundidades iguais:</p>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>connect4_ai_versus_ai.py<span class="w"> </span>minmax<span class="w"> </span><span class="m">5</span><span class="w"> </span>minmax<span class="w"> </span><span class="m">5</span>
+</code></pre></div>
+<p>Com profundidades diferentes:</p>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>connect4_ai_versus_ai.py<span class="w"> </span>minmax<span class="w"> </span><span class="m">1</span><span class="w"> </span>minmax<span class="w"> </span><span class="m">5</span>
+</code></pre></div>
+<hr />
+<h1 id="questoes-gerais">Questões gerais</h1>
+<ul>
+<li>
+<p>Será que uma pessoa pode aperfeiçoar o seu conhecimento sobre Liga4 jogando contra máquinas?</p>
+</li>
+<li>
+<p>Será que uma pessoa pode aperfeiçoar o seu conhecimento sobre Liga4 estudando partidas feitas por duas máquinas?</p>
+</li>
+<li>
+<p>Será que é possível uma máquina aprender a jogar Liga4 jogando contra uma outra máquina que sabe Liga4?</p>
+</li>
+</ul>
+<hr />
+<h1 id="questoes-gerais_1">Questões gerais</h1>
+<ul>
+<li>
+<p>Será que uma pessoa pode aperfeiçoar o seu conhecimento sobre Liga4 jogando contra máquinas? <img alt="👍" class="emojione" src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/svg/1f44d.svg" title=":+1:" /></p>
+</li>
+<li>
+<p>Será que uma pessoa pode aperfeiçoar o seu conhecimento sobre Liga4 estudando partidas feitas por duas máquinas? <img alt="💪" class="emojione" src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/svg/1f4aa.svg" title=":muscle:" /> <img alt="👍" class="emojione" src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/svg/1f44d.svg" title=":+1:" /></p>
+</li>
+<li>
+<p>Será que é possível uma máquina aprender a jogar Liga4 jogando contra uma outra máquina que sabe Liga4? <img alt="👍" class="emojione" src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/svg/1f44d.svg" title=":+1:" /> <img alt="👍" class="emojione" src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/svg/1f44d.svg" title=":+1:" /> <img alt="👍" class="emojione" src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/assets/svg/1f44d.svg" title=":+1:" /> </p>
+</li>
+</ul>
+<hr />
+<h1 id="um-pouco-de-historia-e-tendencias">Um pouco de história e tendências</h1>
+<hr />
+<h1 id="origens">Origens</h1>
+<ul>
+<li>
+<p><a href="https://vision.unipv.it/IA1/ProgrammingaComputerforPlayingChess.pdf">Claude Shannon. Programming a Computer for Playing Chess. Philosophical Magazine, Ser.7, Vol. 41, No. 314 - March 1950.</a> Uma proposta de uso do algoritmo Min Max no jogo de Xadrez. </p>
+</li>
+<li>
+<p><a href="https://en.wikipedia.org/wiki/Claude_Shannon">Claude Shannon</a> cita neste artigo o livro publicado por <a href="https://en.wikipedia.org/wiki/John_von_Neumann">John von Neumann</a> e <a href="https://en.wikipedia.org/wiki/Oskar_Morgenstern">Oskar Morgenstern</a>: Theory of Games and Economic Behavior publicado em 1944. </p>
+</li>
+<li>
+<p>John von Neumann cita no seu livro as origens da ideia de Min Max: <em>Waldegrave (1713) Minmax solution of a 2-person, zero-sum game, reported in a letter from P. de Montmort to N. Bernouilli, transl, and with comments by H. W. Kuhin in W. J. Baurnol and Goldfeld (eds.), Precusors of Mathenatical Economics</em>.</p>
+</li>
+</ul>
+<hr />
+<h1 id="deep-blue-versus-garry-kasparov">Deep Blue versus Garry Kasparov</h1>
+<p><img alt="height:400px" src="../content/img/deepblue.png" /></p>
+<ul>
+<li>O DeepBlue fazia uso do algoritmo MinMax com poda alpha-beta. </li>
+<li>A solução tinha 256 processadores dedicados para a tarefa.</li>
+<li>Examinava em torno de 30 bilhões de movimentos por minuto. </li>
+</ul>
+<hr />
+<ul>
+<li>A profundidade geralmente era de 13. No entanto, em determinadas situações podia chegar até 30. </li>
+<li>
+<p>Para fazer a poda da árvore ou alongar o caminho de busca, a solução fazia uso de uma base de jogos históricos de Xadrez. Com isto era possível determinar o valor de um estado sem continuar a busca.</p>
+</li>
+<li>
+<p><a href="https://www.imdb.com/title/tt0379296/">Game over: Kasparov and The Machine, 2003</a></p>
+</li>
+<li><a href="https://www.youtube.com/watch?v=HwF229U2ba8">Deep Blue - Down the Rabbit Hole</a>: um vídeo um tanto quanto interessante sobre o assunto com vários detalhes que são difíceis de encontrar em outras fontes.</li>
+</ul>
+<hr />
+<h1 id="o-que-mudou-de-shannon-ate-o-deep-blue">O que mudou de Shannon até o Deep Blue?</h1>
+<p><img alt="height:600px" src="../content/img/moravec.jpg" /></p>
+<hr />
+<h1 id="o-avanco-no-jogo-de-xadrez-parou-depois-do-deep-blue">O avanço no jogo de xadrez parou depois do Deep Blue?</h1>
+<p><img alt="height:550px" src="../content/img/elo_rating.png" />   </p>
+<hr />
+<h1 id="alphazero">AlphaZero</h1>
+<p><img alt="height:550px" src="../content/img/alphazero.png" /> </p>
+<hr />
+<h1 id="impactos">Impactos</h1>
+<ul>
+<li>
+<p>M. Sadler, N. Regan, e G. Kasparov, Game Changer: AlphaZero’s Groundbreaking Chess Strategies and the Promise of AI. New in Chess, 2019.</p>
+</li>
+<li>
+<p>N. Tomasev, U. Paquet, D. Hassabis, e V. Kramnik, “Assessing Game Balance with AlphaZero: Exploring Alternative Rule Sets in Chess”, CoRR, vol. abs/2009.04374, 2020, [Online]. Disponível em: <a href="https://arxiv.org/abs/2009.04374">https://arxiv.org/abs/2009.04374</a></p>
+</li>
+</ul>
+<hr />
+<h1 id="proximas-atividades-e-referencias">Próximas atividades e referências</h1>
+<ul>
+<li>
+<p>Códigos, textos, roteiro de exercícios e referências podem ser obtidas no link <a href="http://fbarth.net.br/Connect4-Python/">http://fbarth.net.br/Connect4-Python/</a></p>
+</li>
+<li>
+<p>Sugiro fazer o fork ou clone do projeto <a href="https://github.com/fbarth/Connect4-Python">https://github.com/fbarth/Connect4-Python</a> e seguir as orientações que estão em <a href="http://fbarth.net.br/Connect4-Python/configuracao/">http://fbarth.net.br/Connect4-Python/configuracao/</a>.</p>
+</li>
+</ul>
+
+  <hr>
+<div class="md-source-file">
+  <small>
+    
+      Last update:
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">October 16, 2023</span>
+      
+    
+  </small>
+</div>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.aecac24b.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
