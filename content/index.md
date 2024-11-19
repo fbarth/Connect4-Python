@@ -1,3 +1,6 @@
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.14188212.svg)](https://doi.org/10.5281/zenodo.14188212)
+
+
 # Como implementar um jogador de *Connect-4* usando Min-Max
 
 Liga4 é um jogo popular lançado pela empresa Milton Bradley Company (que foi adquirida pela Hasbro em 1984) em 1974, com o nome de "*Connect Four*". Neste jogo, os jogadores devem colocar as fichas estratégicamente na base, de forma a formar uma sequência com as 4 fichas da sua cor, ao mesmo tempo em que devem prestar atenção para bloquear as tentativas do oponente fazer o mesmo. Liga4 é um jogo para 2 jogadores, recomendado a partir de 5 anos e com duração média de 15 minutos.
