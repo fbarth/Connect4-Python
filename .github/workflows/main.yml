@@ -28,7 +28,7 @@ jobs:
 
       # pip
       - run: |
-          pip install -r requirements.txt
+          pip install -r requirements_docs.txt
           pip install mkdocs-minify-plugin>=0.2
           
       # Set configuration for repository and deploy documentation

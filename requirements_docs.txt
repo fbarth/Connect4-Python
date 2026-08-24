@@ -1,6 +1,3 @@
-numpy
-pygame
-
 # for documentation purpose...
 mkdocs
 Pygments
